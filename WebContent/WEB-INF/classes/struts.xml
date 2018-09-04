@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+   
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="lang"></constant>
+	
+	<package name="fexplorer" extends="struts-default">
+		<action name="getRoot" class="kernel.Root" method="getRootFileSystem">
+			<result name="success">/fExplorer.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="openComputer" class="business.FComputer" method="openComputer" >
+			<result name="success">/fExplorerMyComputer.jsp</result>
+		</action>
+		<action name="openFolder" class="business.FExplorer" method="path" >
+			<result name="success">/fExplorer.jsp</result>
+		</action>
+		<action name="openFile" class="business.FExplorer" method="fileOpener" >
+			<result name="success">fExplorer.jsp</result>
+			<result name="not-found">not-found.jsp</result>
+		</action>
+		<action name="refresh" class="business.FExplorer" method="refresh" >
+			<result name="success">/fExplorer.jsp</result>
+		</action>
+		<action name="back" class="business.FExplorer" method="back" >
+			<result name="success">/fExplorer.jsp</result>
+		</action>
+		<action name="forward" class="business.FExplorer" method="forward" >
+			<result name="success">/fExplorer.jsp</result>
+		</action>
+		<action name="properties" class="business.FExplorer" method="getProperties" >
+			<result name="success"></result>
+		</action>
+		
+		
+		
+		
+				
+		<action name="changeLang" class="business.Language" method="changeLanguage">
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+</struts>
